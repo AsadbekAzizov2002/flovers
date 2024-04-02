@@ -38,7 +38,7 @@ const Footer = () => {
             <div className=" w-[205px] h-[201px] ">
               <div>
                 <img src={frame1} alt="" />
-                {/* <img src={frame2} alt="" /> */}
+                <img src={frame2} alt="" />
               </div>
               <h2 className=" my-2 font-bold w-[101px]">Garden Care</h2>
               <p className=" w-[205px]">
