@@ -18,7 +18,7 @@ const Home = () => {
       </main>
       <main className=" top_hero px-10">
         <div>
-          <div className=" flex justify-between">
+          <div className=" container max-w-[1300px] flex">
             <div className=" chaptaraf">
               <div className=" h-[579px] chaptaraf w-[310px]  bg-[#F6F6F6]">
                 <div className=" w-[268px] h-[383px] pl-4 pr-6 pt-3">
@@ -102,9 +102,18 @@ const Home = () => {
                 <img className=" px-4 bg-inherit" src={gul} alt="" />
               </div>
             </div>
-            {/* chaptaraf shu yerda tugagan  */}
-            <div>
-              {/* <Ongtaraf /> */}
+            {/* chaptaraf shuyerda tugagan  */}
+            <div className="  flex w-[840px]">
+              <div className="justify-between w-[840px] flex">
+                <div className=" ml-[54px]  mt-[38px]">
+                <Ongtaraf />
+
+                </div>
+                <div className="  mr-[px] flex">
+                  <h2 className="w-[63px]">Short by:</h2>
+                  <h2 className=" w-[153px]">Default sorting</h2>
+                </div>
+              </div>
             </div>
           </div>
         </div>

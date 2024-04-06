@@ -5,6 +5,7 @@ import gul4 from "./../assets/gul4.png";
 import gul5 from "./../assets/gul5.png";
 import frame5 from "./../assets/frame5.png";
 import Footer from "./Footer";
+import { NavLink } from "react-router-dom";
 
 const ProceedCheckout = () => {
   return (
@@ -185,7 +186,11 @@ const ProceedCheckout = () => {
                         <h2>Cash on delivery</h2>
                       </div>
                       <button className=" py-3 px-[162px] mt-[49px] active:bg-green-500 hover:bg-green-200 border rounded text-white mb-[210px] bg-green-400">
-                        Place Order
+                        <ul>
+                          <li>
+                            <NavLink to="/trackorder">Place Order</NavLink>
+                          </li>
+                        </ul>
                       </button>
                     </div>
                   </div>

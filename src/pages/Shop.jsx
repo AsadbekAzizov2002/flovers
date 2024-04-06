@@ -16,8 +16,17 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import Footer from "./Footer";
+import { useState } from "react";
+import { useEffect } from "react";
 
 const Shop = () => {
+   const [flover, setFlove] = useState([]);
+   console.log(flover);
+   useEffect(() => {
+     fetch("http://localhost:7774/flowers")
+       .then((res) => res.json())
+       .then((data) => setFlove(data.slice(5, 9)));
+   }, []);
   return (
     <div>
       <main>
@@ -30,16 +39,25 @@ const Shop = () => {
             <div className="w-[700px] justify-between  items-center flex mt-11">
               <div>
                 <div className="  w-[100px] h-[100px] bg-[#FBFBFB]">
-                  <img src={gul1} alt="" />
+                  {flover.map((flow) => (
+                    <div className="">
+                      <img
+                        className=" space-y-2 h-[100px] w-[100px]"
+                        src={flow.image_url}
+                        alt=""
+                      />
+                    </div>
+                  ))}
+                  {/* <img src={gul1} alt="" /> */}
                 </div>
                 <div className="  mt-3 w-[100px] h-[100px] bg-[#FBFBFB]">
-                  <img src={gul2} alt="" />
+                  {/* <img src={gul2} alt="" /> */}
                 </div>
                 <div className=" mt-3 w-[100px] h-[100px] bg-[#FBFBFB]">
-                  <img src={gul3} alt="" />
+                  {/* <img src={gul3} alt="" /> */}
                 </div>
                 <div className=" mt-3 w-[100px] h-[100px] bg-[#FBFBFB]">
-                  <img src={gul4} alt="" />
+                  {/* <img src={gul4} alt="" /> */}
                 </div>
               </div>
               <div className=" ml-[46px]  h-[404px]">
@@ -176,7 +194,7 @@ const Shop = () => {
           <div className=" mb-[200px] ">
             <h2 className="mb-[61px] text-green-400">Releted Products</h2>
             <div className=" grid grid-cols-5 items-center">
-              <div className=" items-center">
+              {/* <div className=" items-center">
                 <img src={gul6} alt="" />
                 <h2 className=" font-normal">Beach Spider Lily</h2>
                 <h2 className=" font-bold text-green-300">$129.00</h2>
@@ -200,6 +218,18 @@ const Shop = () => {
                 <img src={gul10} alt="" />
                 <h2 className=" font-normal">Chinese Evergreen</h2>
                 <h2 className=" font-bold text-green-300">$39.00</h2>
+              </div> */}
+              <div className=" w-[1350px] gap-5 grid grid-cols-4">
+
+              {flover.map((flow) => (
+                <div className=" gap-10 space-x-20">
+                  <img
+                    className=" rounded-lg gap-10 space-y-2 h-[300px] w-[3000px]"
+                    src={flow.image_url}
+                    alt=""
+                  />
+                </div>
+              ))}
               </div>
             </div>
           </div>
