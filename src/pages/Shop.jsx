@@ -18,15 +18,29 @@ import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import Footer from "./Footer";
 import { useState } from "react";
 import { useEffect } from "react";
+import { NavLink } from "react-router-dom";
 
 const Shop = () => {
-   const [flover, setFlove] = useState([]);
-   console.log(flover);
-   useEffect(() => {
-     fetch("http://localhost:7774/flowers")
-       .then((res) => res.json())
-       .then((data) => setFlove(data.slice(5, 9)));
-   }, []);
+  const [flover, setFlove] = useState([]);
+  const [quantity, setQuantity] = useState(0);
+  console.log(flover);
+  useEffect(() => {
+    fetch("http://localhost:7774/flowers")
+      .then((res) => res.json())
+      .then((data) => setFlove(data.slice(5, 9)));
+  }, []);
+
+  // Function to increase quantity
+  const increaseQuantity = () => {
+    setQuantity(quantity + 1);
+  };
+
+  // Function to decrease quantity
+  const decreaseQuantity = () => {
+    if (quantity > 0) {
+      setQuantity(quantity - 1);
+    }
+  };
   return (
     <div>
       <main>
@@ -101,20 +115,36 @@ const Shop = () => {
                 </h2>
               </span>
               <div>
-                <div className=" flex gap-3">
-                  <button className=" text-white p-2 active:bg-green-600 bg-green-300 border rounded-lg">
+                <div className=" items-center flex gap-3">
+                  <button
+                    onClick={decreaseQuantity}
+                    className=" text-white py-2 px-5 active:bg-green-600 bg-green-300 border rounded-lg"
+                  >
                     -
                   </button>
-                  <h2>0</h2>
-                  <button className=" text-white p-2 active:bg-green-600 bg-green-300 border rounded-lg">
+                  <h2 className=" font-bold text-2xl">{quantity}</h2>
+                  <button
+                    onClick={increaseQuantity}
+                    className=" text-white py-2 px-5 active:bg-green-600 bg-green-300 border rounded-lg"
+                  >
                     +
                   </button>
-                  <button className=" px-8 py-3 bg-green-300 text-white rounded border active:bg-green-600">
-                    BUY NOW
-                  </button>
-                  <button className="px-8 py-3 text-green-300 rounded border active:bg-green-600">
-                    ADD TO CARD
-                  </button>
+                  <ul className=" flex">
+                    <li>
+                      <NavLink to="/procedcheckout">
+                        <button className=" px-8 py-3 bg-green-300 text-white rounded border active:bg-green-600">
+                          BUY NOW
+                        </button>
+                      </NavLink>
+                    </li>
+                    <li>
+                      <NavLink to="/shoppingcard">
+                        <button className="px-8 py-3 text-green-300 rounded border active:bg-green-600">
+                          ADD TO CARD
+                        </button>
+                      </NavLink>
+                    </li>
+                  </ul>
                 </div>
                 <div>
                   <p>SKU: 1995751877966</p>
@@ -220,16 +250,21 @@ const Shop = () => {
                 <h2 className=" font-bold text-green-300">$39.00</h2>
               </div> */}
               <div className=" w-[1350px] gap-5 grid grid-cols-4">
-
-              {flover.map((flow) => (
-                <div className=" gap-10 space-x-20">
-                  <img
-                    className=" rounded-lg gap-10 space-y-2 h-[300px] w-[3000px]"
-                    src={flow.image_url}
-                    alt=""
-                  />
-                </div>
-              ))}
+                {flover.map((flow) => (
+                  <div className=" gap-10 space-x-20">
+                    <img
+                      className=" rounded-lg gap-10 space-y-2 h-[300px] w-[3000px]"
+                      src={flow.image_url}
+                      alt=""
+                    />
+                    <h2 className=" justify-start font-semibold">
+                      {flow.scientific_name}
+                    </h2>
+                    <h2 className=" font-semibold text-green-400">
+                      ${flow.id}
+                    </h2>
+                  </div>
+                ))}
               </div>
             </div>
           </div>

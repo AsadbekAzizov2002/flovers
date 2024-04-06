@@ -100,7 +100,7 @@ const Ongtaraf = () => {
   useEffect(() => {
     fetch("http://localhost:7774/flowers")
       .then((res) => res.json())
-      .then((data) => setFlowers(data.slice(0, 9))); // Api hisobidan 9 ta rasmni olib olamiz
+      .then((data) => setFlowers(data.slice(7, 16))); // Api hisobidan 9 ta rasmni olib olamiz
   }, []);
   return (
     <div>
